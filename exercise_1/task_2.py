@@ -5,7 +5,7 @@ from credentials import SYMEDICAL_KEY
 # API endpoint
 url = "https://edu.symedical.com/SymedicalIUSOICRuntime/Term/list"
 params = {
-    "catalogIdentifier": "SYM_RXNORM",
+    "catalogIdentifier": "SYM_NLM_RXNORM",
     "codes": ['860975', '5640'],
     'includeAttributes': True,
     'includeDomainChars': False
@@ -28,8 +28,9 @@ def get_term_list():
     if response.status_code == 200:
         data = response.json()
 
-        for item in data:
-            print(f"\nTermDescription: {item['TermDescription']}")
+       for item in data:
+            print(f"\nCatalogDisplayName: {item['CatalogDisplayName']}")
+            print(f"PreferredDescription: {item['PreferredDescription']}")
             print(f"TermSourceCode: {item['TermSourceCode']}")
 
 
